@@ -1,108 +1,73 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
-
 int main() {
+    char estado1[30], estado2[30];
+    char codigo1[4], codigo2[4];
+    char nomedacidade1[50], nomedacidade2[50];
+    unsigned long int populacao1, populacao2;
+    float area1, area2;
+    float pib1, pib2;
+    int pontos1, pontos2;
 
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    float dens1, dens2;
+    float pib_pc1, pib_pc2;
+    float inv_dens1, inv_dens2;
+    float super_poder1, super_poder2;
 
-char pais1[30], pais2[30];
-char codigo1[3], codigo2[3];
-char nomedacidade1[50], nomedacidade2[50];
-int populacao1, populacao2;
-float area1, area2;
-float pib1, pib2;
-int pontosturisticos1, pontosturisticos2;
+    int win_pop, win_area, win_pib, win_pts, win_dens, win_pibpc, win_sp;
 
-// CARTA - 1 
+printf("==== Desafio Cartas Super Trunfo ====\n");
 
-printf("==== Desafio Super Trunfo - Países ====\n");
-printf("==== Digite as Informacoes da Primeira Carta ====\n");
+    // Entrada Carta 1
+    printf("==== Primeira Carta ====\n");
+    printf("Estado (A-H): ");      scanf("%s", estado1);
+    printf("Codigo (e.g. A01): ");  scanf("%s", codigo1);
+    printf("Cidade: ");             scanf("%s", nomedacidade1);
+    printf("Populacao: ");          scanf("%lu", &populacao1);
+    printf("Area (km2): ");         scanf("%f", &area1);
+    printf("PIB: ");                scanf("%f", &pib1);
+    printf("Pontos Turisticos: ");  scanf("%d", &pontos1);
 
-printf("Digite o Nome de um Pais, Países de (A-H):\n");
-scanf("%s", &pais1);
+    // Cálculos Carta 1
+    dens1        = populacao1 / area1;
+    pib_pc1      = pib1 / populacao1;
+    inv_dens1    = 1.0f / dens1;
+    super_poder1 = populacao1 + area1 + pib1 + pontos1 + pib_pc1 + inv_dens1;
 
-printf("Digite o Codigo da Carta, (Ex: A01, A02).\n");
-scanf("%s", &codigo1);
+    // Entrada Carta 2
+    printf("\n==== Segunda Carta ====\n");
+    printf("Estado (A-H): ");      scanf("%s", estado2);
+    printf("Codigo (e.g. A01): ");  scanf("%s", codigo2);
+    printf("Cidade: ");             scanf("%s", nomedacidade2);
+    printf("Populacao: ");          scanf("%lu", &populacao2);
+    printf("Area (km2): ");         scanf("%f", &area2);
+    printf("PIB: ");                scanf("%f", &pib2);
+    printf("Pontos Turisticos: ");  scanf("%d", &pontos2);
 
-printf("Digite o Nome da Cidade.\n");
-scanf("%s", &nomedacidade1);
+    // Cálculos Carta 2
+    dens2        = populacao2 / area2;
+    pib_pc2      = pib2 / populacao2;
+    inv_dens2    = 1.0f / dens2;
+    super_poder2 = populacao2 + area2 + pib2 + pontos2 + pib_pc2 + inv_dens2;
 
-printf("Digite o Numero da Populacao.\n");
-scanf("%d", &populacao1);
+    // Comparações 
+    win_pop   = (populacao1   > populacao2)   ? 1 : 0;
+    win_area  = (area1        > area2)        ? 1 : 0;
+    win_pib   = (pib1         > pib2)         ? 1 : 0;
+    win_pts   = (pontos1      > pontos2)      ? 1 : 0;
+    win_dens  = (dens1        < dens2)        ? 1 : 0; 
+    win_pibpc = (pib_pc1      > pib_pc2)      ? 1 : 0;
+    win_sp    = (super_poder1 > super_poder2) ? 1 : 0;
 
-printf("Digite a Area da Cidade em Km².\n");
-scanf("%f", &area1);
-
-printf("Digite o PIB da Cidade.\n");
-scanf("%f", &pib1);
-
-printf("Digite Quantos Pontos Turisticos a Cidade Possui.\n");
-scanf("%d", &pontosturisticos1);
-
-// INFORMACOES CARTA - 1
-
-printf("==== IFORMACOES CARTA - 1 ====\n");
-
-printf("Estado: %s\n", pais1);
-printf("Codigo: %s\n", codigo1);
-printf("Cidade: %s\n", nomedacidade1);
-printf("Populacao: %d\n", populacao1);
-printf("Area Km²: %f\n", area1);
-printf("PIB: %f\n", pib1);
-printf("Pontos Turisticos: %d\n", pontosturisticos1);
-
-// CARTA - 2 
-
-printf("==== Digite as informacoes da Carta 2 ==== \n");
-
-    printf("Digite o nome de um Pais, Países de (A-H): \n");
-    scanf("%s", &pais2);
-
-    printf("Digite o codigo da carta (ex: A01, A02): \n");
-    scanf("%s", &codigo2);
-
-    printf("Digite o nome da cidade. \n");
-    scanf("%s", &nomedacidade2);
-
-    printf("Digite o numero da populacao. \n");
-    scanf("%d", &populacao2);
-
-    printf("Digite a área da cidade em km². \n");
-    scanf("%f", &area2);
-
-    printf("Digite o PIB da cidade. \n");
-    scanf("%f", &pib2);
-
-    printf("Digite quantos pontos turisticos a cidade possui. \n");
-    scanf("%d", &pontosturisticos2);
-
-    //INFORMACOES CARTA 2
-
-    printf("==== informacoes da Carta 2 ==== \n");
-
-    printf("Estado: %s\n", pais2);
-    printf("Codigo: %s\n", codigo2);
-    printf("Cidade: %s\n", nomedacidade2);
-    printf("Populacao: %d\n", populacao2);
-    printf("Area: %f\n", area2);
-    printf("PIB: %f\n", pib2);
-    printf("Pontos turisticos: %d\n", pontosturisticos2);
-
-
+    // Saída de resultados 
+    printf("\n==== Comparacao de Atributos ====\n");
+    printf("Populacao         : Carta %d vence\n", win_pop + 1);
+    printf("Area              : Carta %d vence\n", win_area + 1);
+    printf("PIB               : Carta %d vence\n", win_pib + 1);
+    printf("Pontos Turisticos : Carta %d vence\n", win_pts + 1);
+    printf("Densidade Pop     : Carta %d vence\n", win_dens + 1);
+    printf("PIB per Capita    : Carta %d vence\n", win_pibpc + 1);
+    printf("Super Poder       : Carta %d vence\n", win_sp + 1);
 
     return 0;
 }
